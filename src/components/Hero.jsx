@@ -24,17 +24,17 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 pt-20">
         <div className="max-w-3xl text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-fade-in-up">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight animate-fade-in-up">
             Premium Gated Communities & <span className="text-accent">Modern Homes</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-2xl animate-fade-in-up delay-100">
+          <p className="text-base md:text-lg text-gray-200 mb-6 leading-relaxed max-w-2xl animate-fade-in-up delay-100">
             Experience the perfect blend of luxury, comfort, and sustainability. We build homes that are not just structures, but foundations for a lifetime of happiness.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-200">
-            <Button variant="primary" size="lg" to="/apartments">
+          <div className="flex flex-row gap-4 animate-fade-in-up delay-200">
+            <Button variant="primary" size="md" to="/apartments">
               Explore Projects
             </Button>
-            <Button variant="white" size="lg" to="/contact">
+            <Button variant="white" size="md" to="/contact">
               Enquire Now
             </Button>
           </div>
