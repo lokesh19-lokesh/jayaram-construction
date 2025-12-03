@@ -82,6 +82,36 @@ const groupCompanies = [
 ];
 
 const Home = () => {
+  const scrollContainerRef = React.useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollContainerRef.current) {
+      const { current } = scrollContainerRef;
+      const scrollAmount = 350; // Width of card + gap
+      if (direction === 'left') {
+        current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+  };
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      if (scrollContainerRef.current) {
+        const { current } = scrollContainerRef;
+        // Check if we've reached the end
+        if (current.scrollLeft + current.clientWidth >= current.scrollWidth - 10) {
+          current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          current.scrollBy({ left: 350, behavior: 'smooth' });
+        }
+      }
+    }, 3000); // Auto-scroll every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="flex flex-col w-full">
       <Hero />
@@ -96,16 +126,25 @@ const Home = () => {
               <div className="w-20 h-1 bg-accent"></div>
             </div>
             <div className="hidden md:flex gap-2">
-              <button className="p-2 rounded-full border border-gray-300 hover:bg-primary hover:text-white transition-colors">
+              <button
+                onClick={() => scroll('left')}
+                className="p-2 rounded-full border border-gray-300 hover:bg-primary hover:text-white transition-colors"
+              >
                 <ChevronLeft className="w-6 h-6" />
               </button>
-              <button className="p-2 rounded-full border border-gray-300 hover:bg-primary hover:text-white transition-colors">
+              <button
+                onClick={() => scroll('right')}
+                className="p-2 rounded-full border border-gray-300 hover:bg-primary hover:text-white transition-colors"
+              >
                 <ChevronRight className="w-6 h-6" />
               </button>
             </div>
           </div>
 
-          <div className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory hide-scrollbar">
+          <div
+            ref={scrollContainerRef}
+            className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory hide-scrollbar"
+          >
             {featuredProjects.map((project) => (
               <div key={project.id} className="min-w-[300px] md:min-w-[350px] snap-center">
                 <ProjectCard project={project} />
