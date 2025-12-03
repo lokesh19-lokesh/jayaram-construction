@@ -8,6 +8,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const isHome = location.pathname === '/';
+  const isTransparent = isHome && !isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +35,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+      className={`fixed w-full z-50 transition-all duration-300 ${isTransparent ? 'bg-transparent py-4' : 'bg-white shadow-md py-2'
         }`}
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -49,7 +51,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`font-medium hover:text-accent transition-colors ${isScrolled ? 'text-gray-700' : 'text-white/90'
+                className={`font-medium hover:text-accent transition-colors ${isTransparent ? 'text-white/90' : 'text-gray-700'
                   }`}
               >
                 {link.name}
@@ -62,13 +64,13 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden text-primary"
+            className="lg:hidden"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? (
-              <X className={`w-8 h-8 ${isScrolled ? 'text-primary' : 'text-white'}`} />
+              <X className={`w-8 h-8 ${isTransparent ? 'text-white' : 'text-primary'}`} />
             ) : (
-              <Menu className={`w-8 h-8 ${isScrolled ? 'text-primary' : 'text-white'}`} />
+              <Menu className={`w-8 h-8 ${isTransparent ? 'text-white' : 'text-primary'}`} />
             )}
           </button>
         </div>
