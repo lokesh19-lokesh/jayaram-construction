@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight, Building, Film, Pill, ShoppingBag } from 'lucide-react';
+import ReasonsSection from '../components/ReasonsSection';
 import Hero from '../components/Hero';
 import ProjectCard from '../components/ProjectCard';
 import TestimonialCard from '../components/TestimonialCard';
@@ -84,6 +85,7 @@ const Home = () => {
   return (
     <div className="flex flex-col w-full">
       <Hero />
+      <ReasonsSection />
 
       {/* Featured Projects - Horizontal Scroll */}
       <section className="py-20 bg-gray-50">
