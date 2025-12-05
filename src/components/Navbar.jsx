@@ -51,7 +51,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`font-medium hover:text-accent transition-colors ${isTransparent ? 'text-white/90' : 'text-gray-700'
+                className={`font-medium hover:text-accent transition-colors ${isTransparent ? 'text-primary' : 'text-gray-700'
                   }`}
               >
                 {link.name}
