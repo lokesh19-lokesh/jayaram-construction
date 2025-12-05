@@ -35,7 +35,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${isTransparent ? 'bg-transparent py-4' : 'bg-white shadow-md py-2'
+      className={`fixed w-full z-50 transition-all duration-300 ${isTransparent ? 'bg-white py-4' : 'bg-white shadow-md py-2'
         }`}
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -68,9 +68,9 @@ const Navbar = () => {
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? (
-              <X className={`w-8 h-8 ${isTransparent ? 'text-white' : 'text-primary'}`} />
+              <X className={`w-8 h-8 ${isTransparent ? 'text-primary' : 'text-primary'}`} />
             ) : (
-              <Menu className={`w-8 h-8 ${isTransparent ? 'text-white' : 'text-primary'}`} />
+              <Menu className={`w-8 h-8 ${isTransparent ? 'text-primary' : 'text-primary'}`} />
             )}
           </button>
         </div>
