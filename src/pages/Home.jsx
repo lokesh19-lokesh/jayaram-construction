@@ -115,7 +115,7 @@ const Home = () => {
   return (
     <div className="flex flex-col w-full">
       <Hero />
-      <ReasonsSection />
+    
 
       {/* Featured Projects - Horizontal Scroll */}
       <section className="py-20 bg-gray-50">
@@ -153,7 +153,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-
+  <ReasonsSection />
       {/* Company Intro */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
