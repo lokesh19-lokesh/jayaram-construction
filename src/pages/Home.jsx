@@ -6,6 +6,10 @@ import ProjectCard from '../components/ProjectCard';
 import TestimonialCard from '../components/TestimonialCard';
 import StatsSection from '../components/StatsSection';
 import Button from '../components/Button';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 const featuredProjects = [
   {
@@ -82,35 +86,42 @@ const groupCompanies = [
 ];
 
 const Home = () => {
-  const scrollContainerRef = React.useRef(null);
+// Custom Arrow Buttons
+const NextArrow = ({ onClick }) => (
+  <button
+    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg p-2 rounded-full hover:bg-primary hover:text-white transition"
+    onClick={onClick}
+  >
+    <ChevronRight size={22} />
+  </button>
+);
 
-  const scroll = (direction) => {
-    if (scrollContainerRef.current) {
-      const { current } = scrollContainerRef;
-      const scrollAmount = 350; // Width of card + gap
-      if (direction === 'left') {
-        current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      } else {
-        current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      }
-    }
-  };
+const PrevArrow = ({ onClick }) => (
+  <button
+    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg p-2 rounded-full hover:bg-primary hover:text-white transition"
+    onClick={onClick}
+  >
+    <ChevronLeft size={22} />
+  </button>
+);
 
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      if (scrollContainerRef.current) {
-        const { current } = scrollContainerRef;
-        // Check if we've reached the end
-        if (current.scrollLeft + current.clientWidth >= current.scrollWidth - 10) {
-          current.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          current.scrollBy({ left: 350, behavior: 'smooth' });
-        }
-      }
-    }, 3000); // Auto-scroll every 3 seconds
+// SETTINGS FOR SLICK
+const settings = {
+  infinite: true,
+  autoplay: true,
+  autoplaySpeed: 2500,
+  speed: 600,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  centerMode: false,   // set true only if you want center styling
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
+  responsive: [
+    { breakpoint: 1024, settings: { slidesToShow: 2 } },
+    { breakpoint: 768, settings: { slidesToShow: 1 } },
+  ]
+};
 
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="flex flex-col w-full">
@@ -118,41 +129,31 @@ const Home = () => {
     
 
       {/* Featured Projects - Horizontal Scroll */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">In The Spotlight</h2>
-              <div className="w-20 h-1 bg-accent"></div>
-            </div>
-            <div className="hidden md:flex gap-2">
-              <button
-                onClick={() => scroll('left')}
-                className="p-2 rounded-full border border-gray-300 hover:bg-primary hover:text-white transition-colors"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-              <button
-                onClick={() => scroll('right')}
-                className="p-2 rounded-full border border-gray-300 hover:bg-primary hover:text-white transition-colors"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            </div>
-          </div>
+     <section className="py-20 bg-gray-50">
+  <div className="container mx-auto px-4 md:px-6">
+      
+    <div className="flex justify-between items-end mb-12">
+      <div>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          In The Spotlight
+        </h2>
+        <div className="w-20 h-1 bg-accent"></div>
+      </div>
+    </div>
 
-          <div
-            ref={scrollContainerRef}
-            className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory hide-scrollbar"
-          >
-            {featuredProjects.map((project) => (
-              <div key={project.id} className="min-w-[300px] md:min-w-[350px] snap-center">
-                <ProjectCard project={project} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    {/* ⭐ SLICK CAROUSEL ⭐ */}
+    <Slider {...settings}>
+  {featuredProjects.map((project) => (
+    <div key={project.id} className="px-3">
+      <ProjectCard project={project} />
+    </div>
+  ))}
+</Slider>
+
+
+  </div>
+</section>
+
   <ReasonsSection />
       {/* Company Intro */}
       <section className="py-20 bg-white">
