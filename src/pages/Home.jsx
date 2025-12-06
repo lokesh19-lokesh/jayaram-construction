@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight, Building, Film, Pill, ShoppingBag } from 'lucide-react';
 import ReasonsSection from '../components/ReasonsSection';
 import Hero from '../components/Hero';
@@ -9,7 +9,7 @@ import Button from '../components/Button';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import "../../src/style.css"
 
 const featuredProjects = [
   {
@@ -86,6 +86,7 @@ const groupCompanies = [
 ];
 
 const Home = () => {
+  const [active, setActive] = useState("apartments");
 // Custom Arrow Buttons
 const NextArrow = ({ onClick }) => (
   <button
@@ -138,6 +139,29 @@ const settings = {
           In The Spotlight
         </h2>
         <div className="w-20 h-1 bg-accent"></div>
+      </div>
+    </div>
+
+<div className="tabs-container">
+      <div
+        className={`tab-item ${active === "apartments" ? "active" : ""}`}
+        onClick={() => setActive("apartments")}
+      >
+        APARTMENTS
+      </div>
+
+      <div
+        className={`tab-item ${active === "plots" ? "active" : ""}`}
+        onClick={() => setActive("plots")}
+      >
+        PLOTS
+      </div>
+
+      <div
+        className={`tab-item ${active === "bungalows" ? "active" : ""}`}
+        onClick={() => setActive("bungalows")}
+      >
+        BUNGALOWS
       </div>
     </div>
 

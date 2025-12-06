@@ -1,0 +1,27 @@
+.tabs-container {
+  display: flex;
+  /* border: 2px solid #f26623; */
+  width: 100%;
+  align-items: center;
+  padding-block: 1rem;
+}
+
+.tab-item {
+  padding: 12px 28px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f26623;
+  background: #fff;
+  border: 2px solid #f26623;
+  transition: 0.2s ease-in-out;
+}
+
+.tab-item:last-child {
+  /* border-right: none; */
+}
+
+.tab-item.active {
+  background: #f26623;
+  color: #fff;
+}
