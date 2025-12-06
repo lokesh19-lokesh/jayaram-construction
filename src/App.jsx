@@ -15,7 +15,7 @@ import ProjectDetail from './pages/ProjectDetail';
 
 function App() {
   return (
-    <Router>
+    
       <MainLayout>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -29,7 +29,7 @@ function App() {
           <Route path="/careers" element={<Careers />} />
         </Routes>
       </MainLayout>
-    </Router>
+ 
   );
 }
 

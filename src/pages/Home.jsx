@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronLeft, ChevronRight, Building, Film, Pill, ShoppingBag } from 'lucide-react';
 import ReasonsSection from '../components/ReasonsSection';
 import Hero from '../components/Hero';
@@ -143,26 +144,26 @@ const settings = {
     </div>
 
 <div className="tabs-container">
-      <div
+      <Link to="/apartments"
         className={`tab-item ${active === "apartments" ? "active" : ""}`}
         onClick={() => setActive("apartments")}
       >
         APARTMENTS
-      </div>
+      </Link>
 
-      <div
+      <Link to="/villas"
         className={`tab-item ${active === "plots" ? "active" : ""}`}
         onClick={() => setActive("plots")}
       >
         PLOTS
-      </div>
+      </Link>
 
-      <div
+      <Link to="/plots"
         className={`tab-item ${active === "bungalows" ? "active" : ""}`}
         onClick={() => setActive("bungalows")}
       >
         BUNGALOWS
-      </div>
+      </Link>
     </div>
 
     {/* ⭐ SLICK CAROUSEL ⭐ */}

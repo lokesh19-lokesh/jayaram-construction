@@ -5,6 +5,7 @@
   align-items: center;
   padding-block: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .tab-item {
