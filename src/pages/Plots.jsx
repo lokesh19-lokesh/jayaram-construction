@@ -1,80 +1,133 @@
-import React, { useState } from 'react';
-import ProjectCard from '../components/ProjectCard';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PlotsFilter from '../components/PlotsFilter';
+import PlotCard from '../components/PlotCard';
 
 const projects = [
   {
-    id: 2,
-    name: "Golden Meadows",
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    status: "Ready to Move",
-    location: "Whitefield, Bengaluru",
-    city: "Bengaluru",
-    config: "Villa Plots",
-    size: "200 – 500 Sq. Yds",
-    price: "Starts ₹60 Lakhs*"
-  },
-  {
-    id: 7,
+    id: 1,
     name: "Green Valley",
     image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
     status: "New Launch",
-    location: "Shadnagar, Hyderabad",
-    city: "Hyderabad",
+    location: "Shadnagar",
     config: "Open Plots",
     size: "150 – 400 Sq. Yds",
     price: "Starts ₹25 Lakhs*"
   },
   {
-    id: 8,
+    id: 2,
     name: "Royal Enclave",
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    image: "https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
     status: "Under Construction",
     location: "Vijayawada Highway",
-    city: "Vijayawada",
     config: "Gated Community Plots",
     size: "200 – 1000 Sq. Yds",
     price: "Starts ₹40 Lakhs*"
+  },
+  {
+    id: 3,
+    name: "Temple Heights",
+    image: "https://images.unsplash.com/photo-1426122405051-801e19df1104?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    status: "Ready to Move",
+    location: "Yadagirigutta",
+    config: "Temple View Plots",
+    size: "120 – 300 Sq. Yds",
+    price: "Starts ₹18 Lakhs*"
   }
 ];
 
 const Plots = () => {
-  const [filter, setFilter] = useState('All');
-  const cities = ['All', 'Hyderabad', 'Bengaluru', 'Vijayawada'];
+  const [filters, setFilters] = React.useState({
+    status: 'All',
+    location: 'All',
+    budget: 'All'
+  });
 
-  const filteredProjects = filter === 'All'
-    ? projects
-    : projects.filter(p => p.city === filter);
+  const [filteredProjects, setFilteredProjects] = React.useState(projects);
+
+  const handleSearch = () => {
+    let result = projects;
+
+    if (filters.status !== 'All') {
+      result = result.filter(project => project.status === filters.status);
+    }
+
+    if (filters.location !== 'All') {
+      result = result.filter(project => project.location === filters.location);
+    }
+
+    if (filters.budget !== 'All') {
+      result = result.filter(project => {
+        const priceText = project.price;
+        // Simple parsing logic
+        if (filters.budget === '15L-30L') {
+          return priceText.includes('18 Lakhs') || priceText.includes('25 Lakhs'); // Approximating for demo data
+        }
+        if (filters.budget === '30L-50L') {
+          return priceText.includes('40 Lakhs');
+        }
+        if (filters.budget === '50L+') {
+          return false; // No projects in this range in demo data
+        }
+        return true;
+      });
+    }
+
+    setFilteredProjects(result);
+  };
 
   return (
-    <div className="pt-24 pb-20 min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Premium Plots</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Build your dream home on our premium plots located in fast-growing corridors.
-            All plots are clear title, Vastu compliant, and come with top-notch infrastructure.
-          </p>
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <div className="relative h-[400px] w-full bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')" }}>
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-playfair">Premium Open Plots in Hyderabad</h1>
+          <div className="flex items-center text-sm md:text-base space-x-2">
+            <Link to="/" className="hover:text-[#fa6823] transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-[#fa6823] font-semibold">Plots</span>
+          </div>
         </div>
+      </div>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {cities.map((city) => (
-            <button
-              key={city}
-              onClick={() => setFilter(city)}
-              className={`px-6 py-2 rounded-full font-medium transition-all ${filter === city
-                  ? 'bg-primary text-white shadow-md'
-                  : 'bg-white text-gray-600 hover:bg-gray-100'
-                }`}
-            >
-              {city}
-            </button>
-          ))}
-        </div>
+      {/* Filter Section */}
+      <PlotsFilter filters={filters} setFilters={setFilters} onSearch={handleSearch} />
 
+      {/* Project Grid */}
+      <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+          {filteredProjects.length > 0 ? (
+            filteredProjects.map((project) => (
+              <PlotCard key={project.id} project={project} />
+            ))
+          ) : (
+            <div className="col-span-full text-center py-10">
+              <p className="text-xl text-gray-500">No projects found matching your criteria.</p>
+              <button
+                onClick={() => {
+                  setFilters({ status: 'All', location: 'All', budget: 'All' });
+                  setFilteredProjects(projects);
+                }}
+                className="mt-4 text-[#fa6823] font-semibold hover:underline"
+              >
+                Clear Filters
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* SEO Text Section */}
+      <div className="bg-gray-50 py-12 border-t border-gray-100">
+        <div className="container mx-auto px-4 text-gray-600 text-sm leading-relaxed space-y-4">
+          <h2 className="text-xl font-bold text-gray-800">Buy Open Plots in Hyderabad's Growth Corridors</h2>
+          <p>
+            Investing in open plots is one of the best financial decisions you can make. We offer DTCP and HMDA approved plots in prime locations like Shadnagar, Vijayawada Highway, and Yadagirigutta. Whether you are looking for an investment opportunity or want to build your independent house, our plots offer high appreciation potential.
+          </p>
+          <p>
+            All our ventures come with top-notch infrastructure including blacktop roads, electricity, water supply, and compound walls. Secure your future with clear-title plots from Jayaram Construction.
+          </p>
         </div>
       </div>
     </div>
