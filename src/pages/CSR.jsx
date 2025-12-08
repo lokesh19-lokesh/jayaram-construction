@@ -1,9 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Heart, BookOpen, TreePine, Droplets } from 'lucide-react';
+import hero from '../assets/plots/hero.avif';
 
 const CSR = () => {
   return (
-    <div className="pt-24 pb-20">
+    <div className="pb-20">
+      {/* Hero Section */}
+      <div className="relative h-[400px] w-full bg-cover bg-center mb-16" style={{ backgroundImage: `url(${hero})` }}>
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-playfair">CSR Initiatives</h1>
+          <div className="flex items-center text-sm md:text-base space-x-2">
+            <Link to="/" className="hover:text-[#fa6823] transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-[#fa6823] font-semibold">CSR</span>
+          </div>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">CSR Initiatives</h1>

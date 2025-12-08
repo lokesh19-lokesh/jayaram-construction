@@ -1,14 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Award, Users, History, CheckCircle } from 'lucide-react';
+import hero from '../assets/plots/hero.avif';
 
 const About = () => {
   return (
-    <div className="pt-24 pb-20">
+    <div className="pb-20">
       {/* Hero Section */}
       {/* Hero Section */}
+      <div className="relative h-[400px] w-full bg-cover bg-center mb-20" style={{ backgroundImage: `url(${hero})` }}>
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-playfair">About Us</h1>
+          <div className="flex items-center text-sm md:text-base space-x-2">
+            <Link to="/" className="hover:text-[#fa6823] transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-[#fa6823] font-semibold">About Us</span>
+          </div>
+        </div>
+      </div>
+
       <section className="container mx-auto px-4 md:px-6 mb-20">
         <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8">About SriRamaJayarama Group</h1>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">About SriRamaJayarama Group</h2>
           <div className="text-lg text-gray-600 leading-relaxed text-justify space-y-6">
             <p>
               SriRamaJayarama group is well known establishment in the erstwhile Mahabubnagar district which deals with Mahindra Tractors, Maruti Suzuki Cars, TVS Two Wheelers, Total ELF Lubricants, Mahindra Construction Equipment, Shaktiman Agri Implements, SriRama Trailers and Agri Implements and are pioneers in the automobile industry with remarkable achievements across all the segments its associated with. Established in 1974, the journey has been through many milestones along with the great customer satisfaction. The group’s philosophy of Customer First approach has always been the primary moto in whichever segment it stepped into.
