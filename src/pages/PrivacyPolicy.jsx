@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import hero from '../assets/plots/hero.avif';
+import hero from '../assets/privacypolicy.png';
 
 const PrivacyPolicy = () => {
   return (

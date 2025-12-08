@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Award, Users, History, CheckCircle } from 'lucide-react';
-import hero from '../assets/plots/hero.avif';
+import hero from '../assets/abouthero.png';
 
 const About = () => {
   return (
@@ -62,13 +62,18 @@ const About = () => {
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl font-bold mb-12">Awards & Recognition</h2>
           <div className="flex flex-wrap justify-center gap-12">
-            {[1, 2, 3, 4].map((item) => (
-              <div key={item} className="flex flex-col items-center">
-                <Award className="w-16 h-16 text-accent mb-4" />
-                <h3 className="font-bold text-lg">Best Developer 202{item}</h3>
-                <p className="text-gray-300 text-sm">Real Estate Awards</p>
-              </div>
-            ))}
+            <div className="flex flex-col items-center max-w-xs">
+              <Award className="w-16 h-16 text-accent mb-4" />
+              <h3 className="font-bold text-lg">Best Villas & Row Houses</h3>
+              <p className="text-gray-300 text-sm">Create Credai Awards 2021</p>
+              <p className="text-gray-400 text-xs mt-1">Mahabubnagar</p>
+            </div>
+            <div className="flex flex-col items-center max-w-xs">
+              <Award className="w-16 h-16 text-accent mb-4" />
+              <h3 className="font-bold text-lg">Best CSR Activities</h3>
+              <p className="text-gray-300 text-sm">Create Credai Awards 2021</p>
+              <p className="text-gray-400 text-xs mt-1">By Developer</p>
+            </div>
           </div>
         </div>
       </section>

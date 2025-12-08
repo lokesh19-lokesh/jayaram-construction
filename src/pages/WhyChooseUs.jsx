@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, Clock, Leaf, Users, HeartHandshake, BadgeCheck } from 'lucide-react';
-import hero from '../assets/plots/hero.avif';
+import hero from '../assets/whychooseus.png';
 
 const usps = [
   {

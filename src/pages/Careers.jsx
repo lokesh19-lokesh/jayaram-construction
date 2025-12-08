@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
-import hero from '../assets/plots/hero.avif';
+import hero from '../assets/career1.png';
 import { Briefcase, MapPin, Clock } from 'lucide-react';
 
 const jobs = [

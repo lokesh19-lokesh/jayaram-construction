@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
-import hero from '../assets/plots/hero.avif';
+import hero from '../assets/contus.png';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+
 
 const Contact = () => {
   const [formData, setFormData] = useState({
