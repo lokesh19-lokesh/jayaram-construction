@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import l1 from '../assets/apartments/1.png';
 import l2 from '../assets/apartments/2.png';
 import l3 from '../assets/apartments/3.png';
+import l4 from '../assets/plots/1.png';
+import l5 from '../assets/plots/2.png';
+import l6 from '../assets/plots/3.png';
 
 const projectData = {
   Apartments: [
@@ -45,8 +48,29 @@ const projectData = {
       location: 'Shadnagar',
       size: '200 - 500 Sq. Yds',
       price: '₹ 15,000 / Sq. Yd',
-      image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=500&auto=format&fit=crop&q=60'
+      image: l4
+    },
+    {
+      id: 5,
+      name: 'Green Acres',
+      status: 'New Launch',
+      config: 'Open Plots',
+      location: 'Sr Nagar',
+      size: '200 - 500 Sq. Yds',
+      price: '₹ 20,000 / Sq. Yd',
+      image: l5
+    },
+    {
+      id: 6,
+      name: 'Green Acres',
+      status: 'New Launch',
+      config: 'Open Plots',
+      location: 'Sr Nagar',
+      size: '200 - 500 Sq. Yds',
+      price: '₹ 20,000 / Sq. Yd',
+      image: l6
     }
+
   ],
   Bungalows: [
     {
