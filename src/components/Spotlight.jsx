@@ -5,6 +5,9 @@ import l3 from '../assets/apartments/3.png';
 import l4 from '../assets/plots/1.png';
 import l5 from '../assets/plots/2.png';
 import l6 from '../assets/plots/3.png';
+import l7 from '../assets/bungalows/1.png';
+import l8 from '../assets/bungalows/2.png';
+import l9 from '../assets/bungalows/3.png';
 
 const projectData = {
   Apartments: [
@@ -81,8 +84,29 @@ const projectData = {
       location: 'Mokila',
       size: '3500 sft',
       price: '₹ 4.5 Cr Onwards',
-      image: 'https://images.unsplash.com/photo-1613490493576-2f5033157979?w=500&auto=format&fit=crop&q=60'
+      image: l7
+    },
+    {
+      id: 6,
+      name: 'Emerald Heights',
+      status: 'Ready to Move',
+      config: '3 & 4 BHK',
+      location: 'Narsingi',
+      size: '2800 sft',
+      price: '₹ 3.2 Cr Onwards',
+      image: l8
+    },
+    {
+      id: 7,
+      name: 'Golden Crest Villas',
+      status: 'Under Construction',
+      config: '4 BHK',
+      location: 'Kokapet',
+      size: '3200 sft',
+      price: '₹ 4.0 Cr Onwards',
+      image: l9
     }
+
   ]
 };
 
