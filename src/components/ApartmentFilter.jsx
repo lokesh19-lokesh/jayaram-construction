@@ -18,12 +18,12 @@ const ApartmentFilter = ({ filters, setFilters, onSearch }) => {
           {/* Status */}
           <div className="w-full md:w-1/4 relative">
             <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Status</label>
-            <div className="relative">
+            <div className="relative z-20">
               <select
                 name="status"
                 value={filters.status}
                 onChange={handleChange}
-                className="w-full appearance-none bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 font-semibold cursor-pointer"
+                className="w-full appearance-none bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 font-semibold cursor-pointer relative z-10"
               >
                 <option value="All">All Status</option>
                 <option value="New Launch">New Launch</option>
@@ -39,12 +39,12 @@ const ApartmentFilter = ({ filters, setFilters, onSearch }) => {
           {/* Location */}
           <div className="w-full md:w-1/4 relative">
             <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Location</label>
-            <div className="relative">
+            <div className="relative z-20">
               <select
                 name="location"
                 value={filters.location}
                 onChange={handleChange}
-                className="w-full appearance-none bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 font-semibold cursor-pointer"
+                className="w-full appearance-none bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 font-semibold cursor-pointer relative z-10"
               >
                 <option value="All">All Locations</option>
                 <option value="Gachibowli">Gachibowli</option>
@@ -61,12 +61,12 @@ const ApartmentFilter = ({ filters, setFilters, onSearch }) => {
           {/* Budget */}
           <div className="w-full md:w-1/4 relative">
             <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Budget</label>
-            <div className="relative">
+            <div className="relative z-20">
               <select
                 name="budget"
                 value={filters.budget}
                 onChange={handleChange}
-                className="w-full appearance-none bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 font-semibold cursor-pointer"
+                className="w-full appearance-none bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 font-semibold cursor-pointer relative z-10"
               >
                 <option value="All">Any Budget</option>
                 <option value="50L-1Cr">₹ 50L - ₹ 1 Cr</option>
@@ -79,16 +79,7 @@ const ApartmentFilter = ({ filters, setFilters, onSearch }) => {
             </div>
           </div>
 
-          {/* Search Button */}
-          <div className="w-full md:w-auto mt-4 md:mt-0">
-            <label className="block text-xs font-bold text-transparent mb-1 hidden md:block">Search</label>
-            <button
-              onClick={onSearch}
-              className="w-full bg-[#fa6823] hover:bg-orange-700 text-white font-bold py-3 px-8 rounded shadow-md transition-colors uppercase tracking-wide"
-            >
-              Search
-            </button>
-          </div>
+
 
         </div>
       </div>

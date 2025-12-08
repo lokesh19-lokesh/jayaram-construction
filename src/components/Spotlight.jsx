@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import l1 from '../assets/apartments/1.png';
+import l2 from '../assets/apartments/2.png';
+import l3 from '../assets/apartments/3.png';
 
 const projectData = {
   Apartments: [
@@ -10,7 +13,7 @@ const projectData = {
       location: 'Madhapur, Hyderabad',
       size: '2200 - 4500 sft',
       price: '₹ 2.5 Cr Onwards',
-      image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXBhcnRtZW50fGVufDB8fDB8fHww'
+      image: l1
     },
     {
       id: 2,
@@ -20,7 +23,7 @@ const projectData = {
       location: 'Gachibowli, Hyderabad',
       size: '1200 - 1800 sft',
       price: '₹ 1.2 Cr Onwards',
-      image: 'https://images.unsplash.com/photo-1515263487990-61b07816b324?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXBhcnRtZW50fGVufDB8fDB8fHww'
+      image: l2
     },
     {
       id: 3,
@@ -30,7 +33,7 @@ const projectData = {
       location: 'Kondapur, Hyderabad',
       size: '1800 sft',
       price: '₹ 1.8 Cr Onwards',
-      image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500&auto=format&fit=crop&q=60'
+      image: l3
     }
   ],
   Plots: [
@@ -83,8 +86,8 @@ const Spotlight = () => {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`px-8 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-200 ${activeTab === tab
-                    ? 'bg-[#fa6823] text-white shadow-md'
-                    : 'text-gray-500 hover:text-[#fa6823] hover:bg-orange-50'
+                  ? 'bg-[#fa6823] text-white shadow-md'
+                  : 'text-gray-500 hover:text-[#fa6823] hover:bg-orange-50'
                   }`}
               >
                 {tab}

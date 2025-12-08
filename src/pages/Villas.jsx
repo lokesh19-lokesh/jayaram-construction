@@ -45,7 +45,8 @@ const Villas = () => {
 
   const [filteredProjects, setFilteredProjects] = React.useState(projects);
 
-  const handleSearch = () => {
+  // Auto-filter when filters change
+  React.useEffect(() => {
     let result = projects;
 
     if (filters.status !== 'All') {
@@ -74,7 +75,7 @@ const Villas = () => {
     }
 
     setFilteredProjects(result);
-  };
+  }, [filters]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -92,7 +93,7 @@ const Villas = () => {
       </div>
 
       {/* Filter Section */}
-      <VillasFilter filters={filters} setFilters={setFilters} onSearch={handleSearch} />
+      <VillasFilter filters={filters} setFilters={setFilters} />
 
       {/* Project Grid */}
       <div className="container mx-auto px-4 py-16">

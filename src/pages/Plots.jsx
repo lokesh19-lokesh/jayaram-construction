@@ -45,7 +45,8 @@ const Plots = () => {
 
   const [filteredProjects, setFilteredProjects] = React.useState(projects);
 
-  const handleSearch = () => {
+  // Auto-filter when filters change
+  React.useEffect(() => {
     let result = projects;
 
     if (filters.status !== 'All') {
@@ -74,7 +75,7 @@ const Plots = () => {
     }
 
     setFilteredProjects(result);
-  };
+  }, [filters]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -92,7 +93,7 @@ const Plots = () => {
       </div>
 
       {/* Filter Section */}
-      <PlotsFilter filters={filters} setFilters={setFilters} onSearch={handleSearch} />
+      <PlotsFilter filters={filters} setFilters={setFilters} />
 
       {/* Project Grid */}
       <div className="container mx-auto px-4 py-16">

@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ApartmentFilter from '../components/ApartmentFilter';
 import ApartmentCard from '../components/ApartmentCard';
+import l1 from '../assets/apartments/1.png';
+import l2 from '../assets/apartments/2.png';
+import l3 from '../assets/apartments/3.png';
+import l4 from '../assets/apartments/4.png';
+import l5 from '../assets/apartments/5.png';
+import hero from '../assets/apartments/hero.png';
 
 const projects = [
   {
@@ -12,7 +18,7 @@ const projects = [
     location: 'Madhapur, Hyderabad',
     size: '2200 - 4500 sft',
     price: '₹ 2.5 Cr Onwards',
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXBhcnRtZW50fGVufDB8fDB8fHww'
+    image: l1
   },
   {
     id: 2,
@@ -22,7 +28,7 @@ const projects = [
     location: 'Gachibowli, Hyderabad',
     size: '1200 - 1800 sft',
     price: '₹ 1.2 Cr Onwards',
-    image: 'https://images.unsplash.com/photo-1515263487990-61b07816b324?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXBhcnRtZW50fGVufDB8fDB8fHww'
+    image: l2
   },
   {
     id: 3,
@@ -32,7 +38,7 @@ const projects = [
     location: 'Kondapur, Hyderabad',
     size: '1800 sft',
     price: '₹ 1.8 Cr Onwards',
-    image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500&auto=format&fit=crop&q=60'
+    image: l3
   },
   {
     id: 6,
@@ -42,7 +48,7 @@ const projects = [
     location: 'Madhapur, Hyderabad',
     size: '2000 - 3000 sq. ft.',
     price: 'Starts ₹1.5 Cr*',
-    image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b91d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+    image: l4
   },
   {
     id: 4,
@@ -52,7 +58,7 @@ const projects = [
     location: 'Shadnagar',
     size: '1200 - 1500 Sq. ft',
     price: '₹ 45 Lakhs Onwards',
-    image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=500&auto=format&fit=crop&q=60'
+    image: l5
   }
 ];
 
@@ -65,7 +71,8 @@ const Apartments = () => {
 
   const [filteredProjects, setFilteredProjects] = React.useState(projects);
 
-  const handleSearch = () => {
+  // Auto-filter when filters change
+  React.useEffect(() => {
     let result = projects;
 
     if (filters.status !== 'All') {
@@ -93,15 +100,15 @@ const Apartments = () => {
     }
 
     setFilteredProjects(result);
-  };
+  }, [filters]);
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-[400px] w-full bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')" }}>
+      <div className="relative h-[400px] w-full bg-cover bg-center" style={{ backgroundImage: `url(${hero})` }}>
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-playfair">Luxury Apartments for Sale in Hyderabad</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-playfair">Luxury Apartments</h1>
           <div className="flex items-center text-sm md:text-base space-x-2">
             <Link to="/" className="hover:text-[#fa6823] transition-colors">Home</Link>
             <span>/</span>
@@ -111,7 +118,7 @@ const Apartments = () => {
       </div>
 
       {/* Filter Section */}
-      <ApartmentFilter filters={filters} setFilters={setFilters} onSearch={handleSearch} />
+      <ApartmentFilter filters={filters} setFilters={setFilters} />
 
       {/* Project Grid */}
       <div className="container mx-auto px-4 py-16">
