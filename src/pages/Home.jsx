@@ -16,27 +16,32 @@ import floorplan from '../assets/plans/floorplan.png';
 import specification from '../assets/plans/specification.png';
 import alluring from '../assets/alluring.jpg';
 
+
+import t1 from '../assets/t1.png';
+import t2 from '../assets/t2.png';
+import t3 from '../assets/t3.png';
+
 const testimonials = [
   {
     id: 1,
-    name: "Rajesh & Priya",
-    project: "Jayaram Heights",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
-    text: "Buying our dream home with Jayaram Construction was the best decision. The quality of construction and attention to detail is unmatched."
+    name: "K Rajasekhar",
+    // project: "Jayaram Heights",
+    image: t1,
+    text: "Nice gated community and peacefully location at mahabubnagar."
   },
   {
     id: 2,
-    name: "Suresh Kumar",
-    project: "Golden Meadows",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
-    text: "Excellent location and world-class amenities. The team was very transparent throughout the process. Highly recommended!"
+    name: "Sridhar Duppalli",
+    // project: "Golden Meadows",
+    image: t2,
+    text: "Good quality in work and good peacfull locality to live"
   },
   {
     id: 3,
-    name: "Anita Desai",
-    project: "Serene Villas",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
-    text: "Living here feels like a resort. The landscaping and maintenance are top-notch. Truly a premium experience."
+    name: "Naveen kumar",
+    // project: "Serene Villas",
+    image: t3,
+    text: "Peaceful location and great environment"
   }
 ];
 
