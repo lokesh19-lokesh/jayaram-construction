@@ -1,5 +1,6 @@
 import React from 'react';
 import { Building2, Users, Trophy, Home } from 'lucide-react';
+import background from '../assets/background.png';
 
 const stats = [
   {
@@ -31,7 +32,10 @@ const stats = [
 const StatsSection = () => {
   return (
     <section className="py-20 bg-primary text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+      <div className="absolute inset-0">
+        <img src={background} alt="Background" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-black/75"></div>
+      </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-16">

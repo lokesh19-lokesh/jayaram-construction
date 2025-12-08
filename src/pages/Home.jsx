@@ -1,5 +1,5 @@
-import React from 'react';
-import { Building, Film, Pill, ShoppingBag } from 'lucide-react';
+import React, { useState } from 'react';
+import { Building, Film, Pill, ShoppingBag, X } from 'lucide-react';
 import ReasonsSection from '../components/ReasonsSection';
 import Hero from '../components/Hero';
 import TestimonialCard from '../components/TestimonialCard';
@@ -10,6 +10,11 @@ import Spotlight from '../components/Spotlight';
 
 
 
+
+import masterplan from '../assets/plans/masterplan.png';
+import floorplan from '../assets/plans/floorplan.png';
+import specification from '../assets/plans/specification.png';
+import alluring from '../assets/alluring.jpg';
 
 const testimonials = [
   {
@@ -43,6 +48,7 @@ const groupCompanies = [
 ];
 
 const Home = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
 
 
 
@@ -56,6 +62,93 @@ const Home = () => {
       <Spotlight />
 
       <ReasonsSection />
+
+      {/* Plans Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Plans</h2>
+            <div className="w-24 h-1 bg-accent mx-auto"></div>
+            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+              Explore our meticulously designed layouts that maximize space, utility, and comfort.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Master Plan */}
+            <div
+              className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow group cursor-pointer"
+              onClick={() => setSelectedImage(masterplan)}
+            >
+              <div className="overflow-hidden rounded-lg mb-4">
+                <img
+                  src={masterplan}
+                  alt="Master Plan"
+                  className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 text-center">Master Plan</h3>
+            </div>
+
+            {/* Floor Plan */}
+            <div
+              className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow group cursor-pointer"
+              onClick={() => setSelectedImage(floorplan)}
+            >
+              <div className="overflow-hidden rounded-lg mb-4">
+                <img
+                  src={floorplan}
+                  alt="Floor Plan"
+                  className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 text-center">Floor Plan</h3>
+            </div>
+
+            {/* Specifications */}
+            <div
+              className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow group cursor-pointer"
+              onClick={() => setSelectedImage(specification)}
+            >
+              <div className="overflow-hidden rounded-lg mb-4">
+                <img
+                  src={specification}
+                  alt="Specifications"
+                  className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 text-center">Specifications</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm" onClick={() => setSelectedImage(null)}>
+          <button
+            className="absolute top-4 right-4 text-white hover:text-gray-300 focus:outline-none bg-black/50 rounded-full p-2 transition-colors"
+            onClick={() => setSelectedImage(null)}
+          >
+            <X className="w-8 h-8" />
+          </button>
+          <img
+            src={selectedImage}
+            alt="Plan Preview"
+            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+
+      {/* Alluring Image Section */}
+      <section className="w-full">
+        <img
+          src={alluring}
+          alt="Alluring View"
+          className="w-full h-auto object-cover"
+        />
+      </section>
       {/* Company Intro */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
