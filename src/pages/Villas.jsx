@@ -2,12 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import VillasFilter from '../components/VillasFilter';
 import VillaCard from '../components/VillaCard';
+import hero from '../assets/Bungalows/hero.avif';
+import t1 from '../assets/Bungalows/t1.avif';
+import t2 from '../assets/Bungalows/t2.avif';
+import t3 from '../assets/Bungalows/t3.avif';
 
 const projects = [
   {
     id: 1,
     name: "Serene Villas",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    image: t1,
     status: "Under Construction",
     location: "Kompally",
     config: "4 BHK Triplex",
@@ -17,7 +21,7 @@ const projects = [
   {
     id: 2,
     name: "Palm Retreat",
-    image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    image: t2,
     status: "New Launch",
     location: "Sarjapur",
     config: "3 & 4 BHK Villas",
@@ -27,7 +31,7 @@ const projects = [
   {
     id: 3,
     name: "Golden Meadows",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    image: t3,
     status: "Ready to Move",
     location: "Mokila",
     config: "4 BHK Luxury",
@@ -80,7 +84,7 @@ const Villas = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-[400px] w-full bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')" }}>
+      <div className="relative h-[400px] w-full bg-cover bg-center" style={{ backgroundImage: `url(${hero})` }}>
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 font-playfair">Luxury Villas in Hyderabad</h1>

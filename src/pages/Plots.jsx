@@ -2,12 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PlotsFilter from '../components/PlotsFilter';
 import PlotCard from '../components/PlotCard';
+import hero from '../assets/plots/hero.avif';
+import l1 from '../assets/plots/1.png';
+import l2 from '../assets/plots/2.png';
 
 const projects = [
   {
     id: 1,
     name: "Green Valley",
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    image: hero,
     status: "New Launch",
     location: "Shadnagar",
     config: "Open Plots",
@@ -17,7 +20,7 @@ const projects = [
   {
     id: 2,
     name: "Royal Enclave",
-    image: "https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    image: l1,
     status: "Under Construction",
     location: "Vijayawada Highway",
     config: "Gated Community Plots",
@@ -27,7 +30,7 @@ const projects = [
   {
     id: 3,
     name: "Temple Heights",
-    image: "https://images.unsplash.com/photo-1426122405051-801e19df1104?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    image: l2,
     status: "Ready to Move",
     location: "Yadagirigutta",
     config: "Temple View Plots",
@@ -80,7 +83,7 @@ const Plots = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-[400px] w-full bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')" }}>
+      <div className="relative h-[400px] w-full bg-cover bg-center" style={{ backgroundImage: `url(${hero})` }}>
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 font-playfair">Premium Open Plots in Hyderabad</h1>

@@ -5,31 +5,17 @@ const About = () => {
   return (
     <div className="pt-24 pb-20">
       {/* Hero Section */}
+      {/* Hero Section */}
       <section className="container mx-auto px-4 md:px-6 mb-20">
-        <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">Building Legacies, One Home at a Time</h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            Jayaram Construction has been a trusted name in real estate for over 25 years. We are driven by a passion for quality and a commitment to delivering homes that stand the test of time.
-          </p>
-        </div>
-      </section>
-
-      {/* Vision & Mission */}
-      <section className="bg-gray-50 py-20 mb-20">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="bg-white p-8 rounded-xl shadow-sm">
-              <h2 className="text-2xl font-bold text-primary mb-4">Our Vision</h2>
-              <p className="text-gray-600 leading-relaxed">
-                To be the most preferred real estate developer in the region, known for creating sustainable, high-quality living spaces that enhance the quality of life for our customers.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-sm">
-              <h2 className="text-2xl font-bold text-primary mb-4">Our Mission</h2>
-              <p className="text-gray-600 leading-relaxed">
-                To deliver world-class projects on time, every time. To maintain the highest standards of transparency and integrity in all our dealings. To constantly innovate and adopt the latest technologies in construction.
-              </p>
-            </div>
+        <div className="text-center max-w-4xl mx-auto">
+          <h1 className="text-4xl font-bold text-gray-900 mb-8">About SriRamaJayarama Group</h1>
+          <div className="text-lg text-gray-600 leading-relaxed text-justify space-y-6">
+            <p>
+              SriRamaJayarama group is well known establishment in the erstwhile Mahabubnagar district which deals with Mahindra Tractors, Maruti Suzuki Cars, TVS Two Wheelers, Total ELF Lubricants, Mahindra Construction Equipment, Shaktiman Agri Implements, SriRama Trailers and Agri Implements and are pioneers in the automobile industry with remarkable achievements across all the segments its associated with. Established in 1974, the journey has been through many milestones along with the great customer satisfaction. The group’s philosophy of Customer First approach has always been the primary moto in whichever segment it stepped into.
+            </p>
+            <p>
+              With this journey of 40+ years, the group has stepped into real estate industry through their construction establishment Sri Jayarama Constructions Pvt Ltd, established in 2016 with the aim to provide to luxury housing to the people of Mahbubnagar at an affordable & justified prices. With this motto, SriRama Landmark has been initiated with the approach to build Duplex, Independent and Apartments in the town of Mahbubnagar with the outlook and amenities provided are no less than what is offered in the nearest capital, Hyderabad. We as a construction company and with roots to our principles from automobile industry, we always wanted the quality and customer satisfaction first. The same has helped us where we have sold the duplexes, independent houses without any public marketing campaigns. That is the testimony of the trust that people of Mahbubnagar have on the brand SriRama – Jayarama. With the phase 2 being worked out with an additional 50 acres of land adjacent to Phase 1, we are sure to take these standards to next level and mark a benchmark in the industry of real estate in the district of erstwhile Mahbubnagar.
+            </p>
           </div>
         </div>
       </section>
