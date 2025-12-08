@@ -1,59 +1,15 @@
-import React,{useState} from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, ChevronLeft, ChevronRight, Building, Film, Pill, ShoppingBag } from 'lucide-react';
+import React from 'react';
+import { Building, Film, Pill, ShoppingBag } from 'lucide-react';
 import ReasonsSection from '../components/ReasonsSection';
 import Hero from '../components/Hero';
-import ProjectCard from '../components/ProjectCard';
 import TestimonialCard from '../components/TestimonialCard';
+
 import StatsSection from '../components/StatsSection';
 import Button from '../components/Button';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import "../../src/style.css"
+import Spotlight from '../components/Spotlight';
 
-const featuredProjects = [
-  {
-    id: 1,
-    name: "Jayaram Heights",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    status: "New Launch",
-    location: "Gachibowli, Hyderabad",
-    config: "2, 3 & 4 BHK",
-    size: "1200 – 2500 sq. ft.",
-    price: "Starts ₹85 Lakhs*"
-  },
-  {
-    id: 2,
-    name: "Golden Meadows",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    status: "Ready to Move",
-    location: "Whitefield, Bengaluru",
-    config: "Villa Plots",
-    size: "200 – 500 Sq. Yds",
-    price: "Starts ₹60 Lakhs*"
-  },
-  {
-    id: 3,
-    name: "Serene Villas",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    status: "Under Construction",
-    location: "Kompally, Hyderabad",
-    config: "4 BHK Triplex",
-    size: "3500 – 4500 sq. ft.",
-    price: "Price on Request"
-  },
-  {
-    id: 4,
-    name: "Urban Towers",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    status: "New Launch",
-    location: "Hitech City, Hyderabad",
-    config: "3 BHK Premium",
-    size: "1800 – 2200 sq. ft.",
-    price: "Starts ₹1.2 Cr*"
-  }
-];
+
+
 
 const testimonials = [
   {
@@ -87,99 +43,19 @@ const groupCompanies = [
 ];
 
 const Home = () => {
-  const [active, setActive] = useState("apartments");
-// Custom Arrow Buttons
-const NextArrow = ({ onClick }) => (
-  <button
-    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg p-2 rounded-full hover:bg-primary hover:text-white transition"
-    onClick={onClick}
-  >
-    <ChevronRight size={22} />
-  </button>
-);
 
-const PrevArrow = ({ onClick }) => (
-  <button
-    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg p-2 rounded-full hover:bg-primary hover:text-white transition"
-    onClick={onClick}
-  >
-    <ChevronLeft size={22} />
-  </button>
-);
-
-// SETTINGS FOR SLICK
-const settings = {
-  infinite: true,
-  autoplay: true,
-  autoplaySpeed: 2500,
-  speed: 600,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  centerMode: false,   // set true only if you want center styling
-  nextArrow: <NextArrow />,
-  prevArrow: <PrevArrow />,
-  responsive: [
-    { breakpoint: 1024, settings: { slidesToShow: 2 } },
-    { breakpoint: 768, settings: { slidesToShow: 1 } },
-  ]
-};
 
 
   return (
     <div className="flex flex-col w-full">
       <Hero />
-    
+
 
       {/* Featured Projects - Horizontal Scroll */}
-     <section className="py-20 bg-gray-50">
-  <div className="container mx-auto px-4 md:px-6">
-      
-    <div className="flex justify-between items-end mb-12">
-      <div>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          In The Spotlight
-        </h2>
-        <div className="w-20 h-1 bg-accent"></div>
-      </div>
-    </div>
+      {/* Spotlight Section */}
+      <Spotlight />
 
-<div className="tabs-container">
-      <Link to="/apartments"
-        className={`tab-item ${active === "apartments" ? "active" : ""}`}
-        onClick={() => setActive("apartments")}
-      >
-        APARTMENTS
-      </Link>
-
-      <Link to="/villas"
-        className={`tab-item ${active === "plots" ? "active" : ""}`}
-        onClick={() => setActive("plots")}
-      >
-        PLOTS
-      </Link>
-
-      <Link to="/plots"
-        className={`tab-item ${active === "bungalows" ? "active" : ""}`}
-        onClick={() => setActive("bungalows")}
-      >
-        BUNGALOWS
-      </Link>
-    </div>
-
-    {/* ⭐ SLICK CAROUSEL ⭐ */}
-    <Slider {...settings}>
-  {featuredProjects.map((project) => (
-    <div key={project.id} className="px-3">
-      <ProjectCard project={project} />
-    </div>
-  ))}
-</Slider>
-
-
-  </div>
-</section>
-
-  <ReasonsSection />
+      <ReasonsSection />
       {/* Company Intro */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
