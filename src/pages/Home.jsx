@@ -52,13 +52,38 @@ const groupCompanies = [
   { name: "JC Retail", icon: ShoppingBag, type: "Retail" },
 ];
 
+import SEO from '../components/SEO';
+
 const Home = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
-
+  const homeSchema = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "SRI JAYARAMA CONSTRUCTION PVT.LTD",
+    "image": "https://sriramalandmark.com/logo.png",
+    "@id": "https://sriramalandmark.com",
+    "url": "https://sriramalandmark.com",
+    "telephone": "+91 80960 44333",
+    "email": "constructions@srijayarama.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Marketing Office, SriRama Landmark, Behind JPNES College, Hasnapur Road",
+      "addressLocality": "Mahabubnagar",
+      "addressRegion": "Telangana",
+      "postalCode": "509001",
+      "addressCountry": "IN"
+    }
+  };
 
   return (
     <div className="flex flex-col w-full">
+      <SEO
+        title="Premium Apartments & Villas in Mahabubnagar"
+        description="SRI JAYARAMA CONSTRUCTION PVT.LTD offers luxury apartments, open plots, and villas in Mahabubnagar. Building dreams at SriRama Landmark."
+        keywords="SRI JAYARAMA CONSTRUCTION, real estate Mahabubnagar, apartments in Mahabubnagar, villas in Mahabubnagar, open plots, builders in Telangana"
+        schema={homeSchema}
+      />
       <Hero />
 
 

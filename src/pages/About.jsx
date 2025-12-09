@@ -3,9 +3,16 @@ import { Link } from 'react-router-dom';
 import { Award, Users, History, CheckCircle } from 'lucide-react';
 import hero from '../assets/abouthero.png';
 
+import SEO from '../components/SEO';
+
 const About = () => {
   return (
     <div className="pb-20">
+      <SEO
+        title="About Us - Jayaram Construction"
+        description="Learn about our journey, leadership, and awards. SriRama Jayarama Group has been building dreams since 1996 in Mahabubnagar and Telangana."
+        keywords="About Jayaram Construction, construction company history, real estate Mahabubnagar, SriRama Jayarama Group"
+      />
       {/* Hero Section */}
       {/* Hero Section */}
       <div className="relative h-[400px] w-full bg-cover bg-center mb-20" style={{ backgroundImage: `url(${hero})` }}>

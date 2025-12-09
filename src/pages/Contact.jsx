@@ -5,6 +5,8 @@ import hero from '../assets/contus.png';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 
+import SEO from '../components/SEO';
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -15,6 +17,43 @@ const Contact = () => {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "SRI JAYARAMA CONSTRUCTION PVT.LTD",
+    "image": "https://sriramalandmark.com/logo.png",
+    "@id": "https://sriramalandmark.com",
+    "url": "https://sriramalandmark.com",
+    "telephone": "+91 80960 44333",
+    "email": "constructions@srijayarama.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "SriRama Landmark, Behind JPNES College, Hasnapur Road",
+      "addressLocality": "Mahabubnagar",
+      "addressRegion": "Telangana",
+      "postalCode": "509001",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "16.722826",
+      "longitude": "77.999222"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "10:00",
+      "closes": "19:00"
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,6 +69,11 @@ const Contact = () => {
 
   return (
     <div className="pb-20">
+      <SEO
+        title="Contact Us - Jayaram Construction"
+        description="Get in touch with Jayaram Construction for inquiries about apartments, villas, and plots in Mahabubnagar."
+        schema={contactSchema}
+      />
       {/* Hero Section */}
       <div className="relative h-[400px] w-full bg-cover bg-center mb-16" style={{ backgroundImage: `url(${hero})` }}>
         <div className="absolute inset-0 bg-black/50"></div>

@@ -80,7 +80,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left text-gray-400 text-sm">
-          <p>&copy; 2025 Jayaram Constructions. All rights reserved.</p>
+          <p>&copy; 2025 SRI JAYARAMA CONSTRUCTION PVT.LTD. All rights reserved.</p>
           <p className="mt-2 md:mt-0">
             design by <a href="https://thepatternscompany.com/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">The Patterns Company</a>
           </p>
