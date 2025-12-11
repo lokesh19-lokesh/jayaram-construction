@@ -51,13 +51,13 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`font-medium hover:text-accent transition-colors ${isTransparent ? 'text-primary' : 'text-gray-700'
+                className={`font-medium hover:text-[#f26624] transition-colors ${isTransparent ? 'text-primary' : 'text-gray-700'
                   }`}
               >
                 {link.name}
               </Link>
             ))}
-            <Button variant="secondary" size="sm" to="/contact">
+            <Button size="sm" to="/contact" className="!bg-[#f26624] !hover:bg-[#d9551c] text-white">
               Enquire Now
             </Button>
           </div>
@@ -101,7 +101,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className="text-lg font-medium text-gray-700 hover:text-primary border-b border-gray-100 pb-2"
+                className="text-lg font-medium text-gray-700 hover:text-[#f26624] border-b border-gray-100 pb-2"
               >
                 {link.name}
               </Link>
@@ -109,7 +109,7 @@ const Navbar = () => {
           </div>
 
           <div className="mt-auto">
-            <Button variant="primary" className="w-full mb-4">
+            <Button className="w-full mb-4 !bg-[#f26624] !hover:bg-[#d9551c] text-white">
               Enquire Now
             </Button>
             <div className="flex items-center gap-2 text-gray-600">
