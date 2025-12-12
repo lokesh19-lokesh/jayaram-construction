@@ -5,9 +5,9 @@ import l3 from '../assets/apartments/3.png';
 import l4 from '../assets/plots/1.png';
 import l5 from '../assets/plots/2.png';
 import l6 from '../assets/plots/3.png';
-import l7 from '../assets/bungalows/1.png';
-import l8 from '../assets/bungalows/2.png';
-import l9 from '../assets/bungalows/3.png';
+import l7 from '../assets/Bungalows/1.png';
+import l8 from '../assets/Bungalows/2.png';
+import l9 from '../assets/Bungalows/3.png';
 
 const projectData = {
   Apartments: [
