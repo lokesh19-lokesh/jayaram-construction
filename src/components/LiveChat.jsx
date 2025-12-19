@@ -45,12 +45,19 @@ const knowledgeBase = {
 };
 
 const LiveChat = ({ isOpen, onClose }) => {
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good Morning';
+    if (hour < 18) return 'Good Afternoon';
+    return 'Good Evening';
+  };
+
   const [chatState, setChatState] = useState('IDLE'); // IDLE, NAME, PHONE, ADDRESS, REQ
   const [userData, setUserData] = useState({ name: '', phone: '', address: '', req: '' });
   const [messages, setMessages] = useState([
     {
       type: 'bot',
-      text: "Good Morning, welcome to Sri Jayarama Construction. I am Kashvi. How may I assist you today?"
+      text: `${getGreeting()}, welcome to Sri Jayarama Construction. I am Sita. How may I assist you today?`
     }
   ]);
   const [input, setInput] = useState('');
@@ -64,17 +71,14 @@ const LiveChat = ({ isOpen, onClose }) => {
     scrollToBottom();
   }, [messages, isOpen]);
 
-  const handleSend = (e) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-
-    const userMsg = { type: 'user', text: input };
+  const processMessage = (text) => {
+    const userMsg = { type: 'user', text: text };
     setMessages(prev => [...prev, userMsg]);
-    setInput('');
 
     // Logic to find response
-    const lowerInput = input.toLowerCase();
+    const lowerInput = text.toLowerCase();
     let responseText = "I'm not sure about that. Please click the WhatsApp button below to chat with our executive directly.";
+    let responseOptions = null;
 
     // Check knowledge base
     for (const category in knowledgeBase) {
@@ -87,11 +91,24 @@ const LiveChat = ({ isOpen, onClose }) => {
     // Generic greetings
     if (['hi', 'hello', 'hey'].some(k => lowerInput.includes(k))) {
       responseText = "Hello! Ask me about 'Price', 'Availability' or 'Area'.";
+      responseOptions = ['Price', 'Availability', 'Area'];
     }
 
     setTimeout(() => {
-      setMessages(prev => [...prev, { type: 'bot', text: responseText }]);
+      setMessages(prev => [...prev, { type: 'bot', text: responseText, options: responseOptions }]);
     }, 500);
+  };
+
+  const handleSend = (e) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+
+    processMessage(input);
+    setInput('');
+  };
+
+  const handleOptionClick = (option) => {
+    processMessage(option);
   };
 
   if (!isOpen) return null;
@@ -100,13 +117,13 @@ const LiveChat = ({ isOpen, onClose }) => {
     <div className="bg-white rounded-xl shadow-2xl w-[90vw] md:w-[350px] fixed bottom-24 right-4 md:bottom-24 md:right-6 z-50 flex flex-col border border-gray-200 overflow-hidden animate-in slide-in-from-bottom-5 fade-in duration-300 origin-bottom-right max-h-[60vh] md:max-h-[500px]">
 
       {/* Header */}
-      <div className="bg-[#E31E24] p-4 flex items-center justify-between text-white shadow-md">
+      <div className="bg-[#f26624] p-4 flex items-center justify-between text-white shadow-md">
         <div className="flex items-center gap-3">
           <div className="relative">
             <div className="w-10 h-10 rounded-full bg-white/20 p-0.5 overflow-hidden">
-              <img src="https://ui-avatars.com/api/?name=Kashvi&background=fff&color=E31E24" alt="K" className="w-full h-full rounded-full object-cover" />
+              <img src="https://ui-avatars.com/api/?name=Sita&background=fff&color=f26624" alt="K" className="w-full h-full rounded-full object-cover" />
             </div>
-            <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 border-2 border-[#E31E24] rounded-full"></div>
+            <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 border-2 border-[#f26624] rounded-full"></div>
           </div>
           <div>
             <h3 className="font-bold text-sm">Sri Jayarama Support</h3>
@@ -124,15 +141,31 @@ const LiveChat = ({ isOpen, onClose }) => {
       {/* Body */}
       <div className="flex-1 bg-[#f0f2f5] p-4 overflow-y-auto min-h-[250px] space-y-4">
         {messages.map((msg, index) => (
-          <div key={index} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-            <div
-              className={`max-w-[85%] p-3 rounded-lg text-sm shadow-sm whitespace-pre-line ${msg.type === 'user'
-                ? 'bg-[#E31E24] text-white rounded-br-none'
-                : 'bg-white text-gray-800 rounded-tl-none border border-gray-100'
-                }`}
-            >
-              {msg.text}
+          <div key={index} className={`flex flex-col ${msg.type === 'user' ? 'items-end' : 'items-start'}`}>
+            <div className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'} w-full`}>
+              <div
+                className={`max-w-[85%] p-3 rounded-lg text-sm shadow-sm whitespace-pre-line ${msg.type === 'user'
+                  ? 'bg-[#f26624] text-white rounded-br-none'
+                  : 'bg-white text-gray-800 rounded-tl-none border border-gray-100'
+                  }`}
+              >
+                {msg.text}
+              </div>
             </div>
+
+            {msg.options && (
+              <div className="flex flex-wrap gap-2 mt-2 ml-1 animate-in fade-in slide-in-from-left-2 duration-300">
+                {msg.options.map((option, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleOptionClick(option)}
+                    className="bg-white border border-[#f26624] text-[#f26624] text-xs px-3 py-1.5 rounded-full hover:bg-[#f26624] hover:text-white transition-all shadow-sm active:scale-95"
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         ))}
         <div ref={chatEndRef} />
@@ -146,12 +179,12 @@ const LiveChat = ({ isOpen, onClose }) => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask about price, area..."
-            className="flex-1 bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-full px-4 py-2.5 focus:outline-none focus:border-[#E31E24] focus:ring-1 focus:ring-[#E31E24] transition-all"
+            className="flex-1 bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-full px-4 py-2.5 focus:outline-none focus:border-[#f26624] focus:ring-1 focus:ring-[#f26624] transition-all"
             autoFocus
           />
           <button
             type="submit"
-            className={`p-2.5 rounded-full text-white transition-all shadow-md ${input.trim() ? 'bg-[#E31E24] hover:bg-red-700' : 'bg-gray-300 cursor-not-allowed'
+            className={`p-2.5 rounded-full text-white transition-all shadow-md ${input.trim() ? 'bg-[#f26624] hover:bg-orange-700' : 'bg-gray-300 cursor-not-allowed'
               }`}
             disabled={!input.trim()}
           >
