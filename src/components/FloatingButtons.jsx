@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, MessageSquare } from 'lucide-react';
+import LiveChat from './LiveChat';
 
 const FloatingButtons = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -31,8 +33,23 @@ const FloatingButtons = () => {
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
+
+
   return (
-    <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
+    <div className="fixed bottom-6 right-6 flex flex-col items-end gap-4 z-50">
+      <LiveChat isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+
+      {/* Chat Trigger Button */}
+      {!isChatOpen && (
+        <button
+          onClick={() => setIsChatOpen(true)}
+          className="bg-[#E31E24] hover:bg-[#c4191f] text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 flex items-center justify-center z-50 animate-bounce"
+          aria-label="Open Chat"
+        >
+          <MessageSquare className="w-6 h-6" />
+        </button>
+      )}
+
       {/* WhatsApp Button */}
       <button
         onClick={openWhatsApp}
