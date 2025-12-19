@@ -43,7 +43,7 @@ const FloatingButtons = () => {
       {!isChatOpen && (
         <button
           onClick={() => setIsChatOpen(true)}
-          className="bg-[#E31E24] hover:bg-[#c4191f] text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 flex items-center justify-center z-50 animate-bounce"
+          className="bg-[#f26624] hover:bg-[#d9551c] text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 flex items-center justify-center z-50 animate-bounce"
           aria-label="Open Chat"
         >
           <MessageSquare className="w-6 h-6" />
@@ -70,7 +70,7 @@ const FloatingButtons = () => {
       {/* Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className={`bg-primary hover:bg-primary-light text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 flex items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
+        className={`bg-[#f26624] hover:bg-[#d9551c] text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 flex items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
           }`}
         aria-label="Scroll to Top"
       >
