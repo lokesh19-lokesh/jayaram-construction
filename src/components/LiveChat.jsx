@@ -41,6 +41,14 @@ const knowledgeBase = {
 📞 +91 80960 44333
 📧 constructions@srijayarama.com
 📍 Marketing Office: SriRama Landmark, Mahabubnagar.`
+  },
+  services: {
+    keywords: ['service', 'provide', 'offer', 'work', 'construction', 'serv', 'prov'],
+    response: `We provide the following services:
+• Premium Apartment Construction
+• Luxury Villa Projects
+• Open Plot Ventures with Clear Title
+• End-to-End Construction Services`
   }
 };
 
@@ -88,10 +96,26 @@ const LiveChat = ({ isOpen, onClose }) => {
       }
     }
 
+    // Specific Conversational Logic
+    if (lowerInput.includes('tell about your self') || lowerInput.includes('tell about yourself')) {
+      responseText = "Sure, I will assist you with this.\nThis is Sita from the live chat helpdesk..";
+    }
+    else if (lowerInput.includes('good morning')) {
+      responseText = "Good Morning.";
+    }
+    else if (lowerInput.includes('good afternoon')) {
+      responseText = "Good Afternoon.";
+    }
+    else if (lowerInput.includes('good evening')) {
+      responseText = "Good Evening.";
+    }
+    else if (lowerInput.includes('how can you help me')) {
+      responseText = "May I know your question please?";
+    }
     // Generic greetings
-    if (['hi', 'hello', 'hey'].some(k => lowerInput.includes(k))) {
-      responseText = "Hello! Ask me about 'Price', 'Availability' or 'Area'.";
-      responseOptions = ['Price', 'Availability', 'Area'];
+    else if (['hi', 'hello', 'hey'].some(k => new RegExp(`\\b${k}\\b`).test(lowerInput))) {
+      responseText = "Hi\nHow can I assist you today?\nMay I have your reply, please?";
+      // responseOptions = ['Price', 'Availability', 'Area'];
     }
 
     setTimeout(() => {
