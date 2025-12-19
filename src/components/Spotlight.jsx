@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import l1 from '../assets/apartments/1.png';
 import l2 from '../assets/apartments/2.png';
 import l3 from '../assets/apartments/3.png';
@@ -193,12 +194,15 @@ const Spotlight = () => {
                 </div>
 
                 <div className="pt-4 border-t border-dashed border-gray-200">
-                  <a href="#" className="flex items-center text-[#fa6823] font-bold text-sm hover:text-orange-700 transition-colors group/link">
+                  <Link
+                    to={activeTab === 'Apartments' ? '/apartments' : activeTab === 'Plots' ? '/plots' : '/villas'}
+                    className="flex items-center text-[#fa6823] font-bold text-sm hover:text-orange-700 transition-colors group/link"
+                  >
                     View Details
                     <svg className="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
