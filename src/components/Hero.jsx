@@ -70,12 +70,12 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[50vh] md:h-screen min-h-[250px] md:min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* Video Slider Background */}
       <div className="absolute inset-0 z-0">
         <Slider ref={sliderRef} {...settings} className="h-full w-full hero-slider">
           {videos.map((vid, index) => (
-            <div key={index} className="h-screen w-full relative outline-none focus:outline-none">
+            <div key={index} className="h-full w-full relative outline-none focus:outline-none">
               <video
                 key={vid}
                 playsInline
@@ -93,7 +93,7 @@ const Hero = () => {
       {/* Mute/Unmute Button */}
       <button
         onClick={toggleMute}
-        className="absolute bottom-10 right-10 z-50 w-12 h-12 flex items-center justify-center bg-black/40 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-black/60 transition-all cursor-pointer shadow-lg hover:scale-110"
+        className="absolute bottom-4 right-4 md:bottom-10 md:right-10 z-50 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-black/40 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-black/60 transition-all cursor-pointer shadow-lg hover:scale-110"
         aria-label={isMuted ? "Unmute Video" : "Mute Video"}
       >
         {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}

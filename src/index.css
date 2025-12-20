@@ -5,3 +5,10 @@
 @import "slick-carousel/slick/slick-theme.css";
 
 
+/* Ensure the slider and its internal divs take full height */
+.hero-slider,
+.hero-slider .slick-list,
+.hero-slider .slick-track,
+.hero-slider .slick-slide>div {
+  height: 100%;
+}
