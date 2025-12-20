@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BarChart, Activity, PieChart } from 'lucide-react';
 
 const ProjectStats = () => {
@@ -28,8 +28,33 @@ const ProjectStats = () => {
   const totalSold = unitDetails.reduce((acc, item) => acc + item.sold, 0);
   const totalUnsold = totalUnits - totalSold;
 
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // Animate only once
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="py-16 bg-white border-t border-gray-100">
+    <section ref={sectionRef} className="py-16 bg-white border-t border-gray-100">
       <div className="container mx-auto px-4">
 
         {/* Section Header */}
@@ -64,8 +89,8 @@ const ProjectStats = () => {
                       {item.sales}
                     </div>
                     <div
-                      className="w-full bg-[#003366] rounded-t-md hover:bg-[#f26624] transition-colors duration-300 relative"
-                      style={{ height: `${heightPercent}%` }}
+                      className="w-full bg-[#003366] rounded-t-md hover:bg-[#f26624] transition-all duration-1000 ease-out relative"
+                      style={{ height: isVisible ? `${heightPercent}%` : '0%' }}
                     ></div>
                     <div className="mt-3 text-[10px] md:text-xs text-gray-500 font-medium rotate-0 md:-rotate-45 md:origin-top-left whitespace-nowrap">
                       {item.year}
@@ -106,8 +131,8 @@ const ProjectStats = () => {
                     </div>
                     <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-[#f26624] rounded-full relative"
-                        style={{ width: `${soldPercent}%` }}
+                        className="h-full bg-[#f26624] rounded-full relative transition-all duration-1000 ease-out"
+                        style={{ width: isVisible ? `${soldPercent}%` : '0%' }}
                       >
                         {/* Shine effect */}
                         <div className="absolute top-0 left-0 w-full h-full bg-white/20 opacity-0 group-hover:opacity-100"></div>

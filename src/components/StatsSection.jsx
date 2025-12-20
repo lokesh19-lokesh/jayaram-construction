@@ -5,29 +5,29 @@ import background from '../assets/background.png';
 const stats = [
   {
     id: 1,
-    label: "Sq. Ft. Delivered",
-    value: 10,
-    suffix: "M+",
+    label: "Total Units",
+    value: 94,
+    suffix: "",
     icon: Building2,
   },
   {
     id: 2,
     label: "Happy Families",
-    value: 5000,
-    suffix: "+",
+    value: 54,
+    suffix: "",
     icon: Users,
   },
   {
     id: 3,
-    label: "Years of Experience",
-    value: 25,
+    label: "Years of Excellence",
+    value: 8,
     suffix: "+",
     icon: Trophy,
   },
   {
     id: 4,
-    label: "Ongoing Projects",
-    value: 12,
+    label: "Units Available",
+    value: 40,
     suffix: "",
     icon: Home,
   },
@@ -89,7 +89,7 @@ const StatsSection = () => {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Building Dreams Since 1996</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Building Dreams Since 2017</h2>
           <div className="w-24 h-1 bg-accent mx-auto"></div>
         </div>
 
