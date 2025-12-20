@@ -35,7 +35,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${isTransparent ? 'bg-white py-4' : 'bg-white shadow-md py-2'
+      className={`fixed w-full z-50 transition-all duration-300 border-b-4 border-[#003366] ${isTransparent ? 'bg-white py-4' : 'bg-white shadow-md py-2'
         }`}
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -51,7 +51,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`font-medium hover:text-[#f26624] transition-colors ${isTransparent ? 'text-primary' : 'text-gray-700'
+                className={`font-bold uppercase tracking-wider hover:text-[#f26624] transition-colors ${isTransparent ? 'text-[#003366]' : 'text-gray-800'
                   }`}
               >
                 {link.name}
