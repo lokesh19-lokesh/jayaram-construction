@@ -7,6 +7,7 @@ import TestimonialCard from '../components/TestimonialCard';
 import StatsSection from '../components/StatsSection';
 import Button from '../components/Button';
 import Spotlight from '../components/Spotlight';
+import ProjectStats from '../components/ProjectStats';
 
 
 
@@ -91,7 +92,7 @@ const Home = () => {
       {/* Spotlight Section */}
       <Spotlight />
 
-      <ReasonsSection />
+      {/* <ReasonsSection /> */}
 
       {/* Plans Section */}
       <section className="py-20 bg-gray-50">
@@ -152,6 +153,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Project Stats Dashboard */}
+      <ProjectStats />
 
       {/* Image Modal */}
       {selectedImage && (
