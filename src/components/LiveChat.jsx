@@ -49,6 +49,16 @@ const knowledgeBase = {
 • Luxury Villa Projects
 • Open Plot Ventures with Clear Title
 • End-to-End Construction Services`
+  },
+  help: {
+    keywords: ['help', 'assist', 'support', 'can you do', 'what do you do'],
+    response: `I can assist you with information about our:
+• Apartment & Villa Prices
+• Available Units
+• Plot Sizes & Areas
+• Project Specifications
+
+Just ask me anything!`
   }
 };
 
@@ -85,7 +95,8 @@ const LiveChat = ({ isOpen, onClose }) => {
 
     // Logic to find response
     const lowerInput = text.toLowerCase();
-    let responseText = "I'm not sure about that. Please click the WhatsApp button below to chat with our executive directly.";
+    const defaultResponse = "I'm not sure about that. Please click the WhatsApp button below to chat with our executive directly.";
+    let responseText = defaultResponse;
     let responseOptions = null;
 
     // Check knowledge base
@@ -109,14 +120,17 @@ const LiveChat = ({ isOpen, onClose }) => {
     else if (lowerInput.includes('good evening')) {
       responseText = "Good Evening.";
     }
-    else if (lowerInput.includes('how can you help me')) {
-      responseText = "May I know your question please?";
+    else if (lowerInput.includes('reply') || lowerInput.includes('answer')) {
+      responseText = "I am here to help! Please ask your question regarding prices, availability, or site details.";
     }
     // Generic greetings
     else if (['hi', 'hello', 'hey'].some(k => new RegExp(`\\b${k}\\b`).test(lowerInput))) {
       responseText = "Hi\nHow can I assist you today?\nMay I have your reply, please?";
       // responseOptions = ['Price', 'Availability', 'Area'];
     }
+
+    // Always provide helpful options on every reply
+    responseOptions = ['Apartment & Villa Prices', 'Available Units', 'Plot Sizes & Areas', 'Area'];
 
     setTimeout(() => {
       setMessages(prev => [...prev, { type: 'bot', text: responseText, options: responseOptions }]);
